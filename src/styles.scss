@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+html,
+body {
+  background-size: auto;
+  background-position: absolute;
+  background: url(assets/EMU_Patterns-background_01.png);
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 10%;
+}
+
+.picLog{    
+    display: flex;
+    border-radius: 100%;  
+    width: 25px;
+    margin-right: 7px;
+    border-color: aquamarine;
+    border-width: 2px;
+    border-style: solid;
+}
+
+footer{
+    position: fixed;
+    background-color: #212529;
+    width: 100%;
+    color: white;
+
+    text-align: right;
+    padding: 5px;
+    text-justify: auto;
+    bottom: 0;         
+}
+
+.errorMessage {
+    color: rgb(255, 0, 0);
+    text-align: left;    
+    margin-left: 10px;   
+    font-style: italic; 
+    font-size: small;
+  }
+
+ .btn{
+     margin-top: 10px;
+ } 
+
+ .register{
+    margin-top: 10px;
+ }

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <b>Sala de Juegos</b>
+        </div>
+        <div class="card-body p-4">
+            <app-error *ngIf="errorShow" mensaje="{{errorMessage}}" color="alert-danger"></app-error>
+
+            <h3>SPRINT 1</h3>
+            <ul>
+              <li>Subido a heroku o firebase.</li>
+              <li>Componente de Login.</li>
+              <li>Componente Home.</li>
+              <li>Componente “Quién Soy”</li>
+              <li>Favicon</li>   
+            </ul>   
+
+            <div *ngIf="userLogged|async as user; else then_content">
+                <button class="btn btn-danger form-control "  (click)="logout()">Cerrar Sesión</button>                  
+                <a class="btn btn-info form-control" routerLink="/quien-soy"> Quien soy</a>  
+                <a class="btn btn-warning form-control" routerLink="/juegos/tateti"> Juegos</a>  
+
+            </div>
+            <ng-template #then_content>
+            <a class="btn btn-success form-control " routerLink="login" >  
+                Iniciar Sesión
+            </a>
+            </ng-template>
+        </div>
+    </div>
+</div>
