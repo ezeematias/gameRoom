@@ -8,14 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'gameRoom';
-  
-  public loading :boolean = false;
 
   ngOnInit(): void {
-
-    setTimeout(() => {
-      this.loading = true;
-    }, 5000);
 }
   
 }

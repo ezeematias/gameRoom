@@ -3,6 +3,7 @@ import { User } from 'src/app/entities/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 
 @Component({
@@ -12,11 +13,9 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private auth: AuthService, private router: Router, private readonly fb: FormBuilder) { }
+  constructor(private auth: AuthService, private router: Router, private readonly fb: FormBuilder, private spinnerService:SpinnerService) { }
 
   form!: FormGroup;
-
-  loading: boolean = false;
 
   usuario = new User();
   rePassword: string = '';
@@ -37,13 +36,13 @@ export class RegisterComponent implements OnInit {
   }  
 
   registrar() {
-    this.loading = true;
+    this.spinnerService.show();
     if (this.usuario.password === this.rePassword) {
-      this.auth.register(this.usuario.email, this.usuario.password).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error de registro",error)}).finally(() => {this.loading = false;});
+      this.auth.register(this.usuario.email, this.usuario.password).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error de registro",error)}).finally(() => {this.spinnerService.hide();});
       
     } else {
       this.errorShow = true;
-      this.loading = false;
+      this.spinnerService.hide();
       this.errorMessage = 'Las contraseñas no coinciden';
     }
   }

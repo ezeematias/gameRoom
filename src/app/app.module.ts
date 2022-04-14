@@ -18,8 +18,8 @@ import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { GamesComponent } from './pages/games/games.component';
 import { TatetiComponent } from './pages/tateti/tateti.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { SpinnerModule } from './components/spinner/spinner.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB5NbwexCmQ3_35Mc31xGsoQHRQY1o9E74",
@@ -42,9 +42,7 @@ const firebaseConfig = {
     ErrorComponent,
     NotFoundComponent,
     GamesComponent,
-    TatetiComponent,
-    SpinnerComponent,
-    HttpClientModule
+    TatetiComponent   
   ],
   imports: [
     BrowserModule,
@@ -53,10 +51,13 @@ const firebaseConfig = {
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    SpinnerModule
+
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

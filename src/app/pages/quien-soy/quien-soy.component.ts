@@ -1,24 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { SpinnerComponent } from 'src/app/components/spinner/spinner.component';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-quien-soy',
   templateUrl: './quien-soy.component.html',
   styleUrls: ['./quien-soy.component.scss']
 })
-export class QuienSoyComponent implements OnInit {
+export class QuienSoyComponent implements OnInit { 
 
- 
-
-  constructor(private spinner : SpinnerComponent) { 
-  }
-
+  constructor(private spinnerService: SpinnerService) { }
+  
   ngOnInit(): void {
     
-  }
-
-  ngAfterViewInit(): void {
-    
-  }
+  }  
 
 }
