@@ -35,13 +35,13 @@ export class LoginComponent implements OnInit {
   ingresar() {
     console.log(this.usuario);
     this.auth.login(this.usuario.email, this.usuario.password).then(res => {      
-      console.log("Ingresó",res)}).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso",error)});
+      console.log("Ingresó",res)}).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso",error)}).finally(() => {});
   }
 
   ingresarConGoogle() {
     console.log(this.usuario);
     this.auth.loginWuthGoogle(this.usuario.email, this.usuario.password).then(res => {
-      console.log("Se logueo",res)}).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso",error)});
+      console.log("Se logueo",res)}).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso",error)}).finally(() => {});
   }
 
   getUserLog(){
@@ -55,6 +55,11 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.pattern("^[^@]+@[^@]+\.[a-zA-Z]{2,}$")],      
       password: ['', [Validators.minLength(6), Validators.maxLength(20)]]
     });
+  }
+
+  autoLogin():void{
+    this.usuario.email = 'auto@session.com';
+    this.usuario.password = '123456';
   }
 
   onSubmit() {

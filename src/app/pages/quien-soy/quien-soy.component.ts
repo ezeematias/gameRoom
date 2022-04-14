@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpinnerComponent } from 'src/app/components/spinner/spinner.component';
 
 @Component({
   selector: 'app-quien-soy',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuienSoyComponent implements OnInit {
 
-  constructor() { }
+ 
+
+  constructor(private spinner : SpinnerComponent) { 
+  }
 
   ngOnInit(): void {
+    
+  }
+
+  ngAfterViewInit(): void {
+    
   }
 
 }

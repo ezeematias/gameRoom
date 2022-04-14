@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gameRoom';
+  
+  public loading :boolean = false;
+
+  ngOnInit(): void {
+
+    setTimeout(() => {
+      this.loading = true;
+    }, 5000);
+}
+  
 }

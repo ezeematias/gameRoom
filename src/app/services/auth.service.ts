@@ -11,6 +11,7 @@ export class AuthService {
   constructor(private afauth: AngularFireAuth, private router: Router) { }
 
   async login(email: string, password: string) {
+    
     return await this.afauth.signInWithEmailAndPassword(email, password).then(res => this.router.navigate(['juegos/tateti'])).catch(error => {
       switch (error.code) {
         case 'auth/invalid-email':

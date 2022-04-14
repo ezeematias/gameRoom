@@ -5,26 +5,43 @@
         </div>
         <div class="card-body p-4">
             <app-error *ngIf="errorShow" mensaje="{{errorMessage}}" color="alert-danger"></app-error>
-
-            <h3>SPRINT 1</h3>
+            <h3>SPRINT 2</h3>
+            <h4>Componente Home</h4>
             <ul>
-              <li>Subido a heroku o firebase.</li>
-              <li>Componente de Login.</li>
-              <li>Componente Home.</li>
-              <li>Componente “Quién Soy”</li>
-              <li>Favicon</li>   
-            </ul>   
+                <li>Tiene que ser el componente principal, el cual tendrá los accesos a los diferentes juegos y
+                    listados.</li>
+                <li>Si el usuario está logueado, mostrar información del mismo y botón de Log Out. (No se debe mostrar
+                    los botones de Registro y Login una vez que el usuario está logueado)</li>
+            </ul>
+            <h4>Componente Login</h4>
+            <ul>
+                <li>Tiene que tener la validación de usuario contra firebase.</li>
+                <li>Registrar el log de ese usuario en firebase.</li>
+                <li>En caso de que sea exitoso registrar:</li>
+                <ul>
+                    <li>Usuario.</li>
+                    <li>Fecha de ingreso.</li>
+                </ul>
+                <li>En caso correcto deber rutear a la homeDebe tener botones de acceso rápido.</li>
+                <li>Estos botones tienen que completar los campos de email y contraseña con un usuario válido que al presionar el botón ingresar acceda a la home.</li>
+            </ul>
+            <h4>Componente Registro</h4>
+            <ul>
+                <li>Tiene que generar un nuevo usuario y redirigir al home al crearlo exitosamente, es decir, loguear al usuario
+                    automáticamente.</li>
+                <li>Emitir mensaje si el usuario ya se encuentra registrado. (NO USAR ALERT)</li>
+            </ul>
 
             <div *ngIf="userLogged|async as user; else then_content">
-                <button class="btn btn-danger form-control "  (click)="logout()">Cerrar Sesión</button>                  
-                <a class="btn btn-info form-control" routerLink="/quien-soy"> Quien soy</a>  
-                <a class="btn btn-warning form-control" routerLink="/juegos/tateti"> Juegos</a>  
+                <button class="btn btn-danger form-control " (click)="logout()">Cerrar Sesión</button>
+                <a class="btn btn-info form-control" routerLink="/quien-soy"> Quien soy</a>
+                <a class="btn btn-warning form-control" routerLink="/juegos/tateti"> Juegos</a>
 
             </div>
             <ng-template #then_content>
-            <a class="btn btn-success form-control " routerLink="/login" >  
-                Iniciar Sesión
-            </a>
+                <a class="btn btn-success form-control " routerLink="/login">
+                    Iniciar Sesión
+                </a>
             </ng-template>
         </div>
     </div>

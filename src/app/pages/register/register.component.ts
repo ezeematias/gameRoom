@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
 
   form!: FormGroup;
 
+  loading: boolean = false;
+
   usuario = new User();
   rePassword: string = '';
 
@@ -35,11 +37,13 @@ export class RegisterComponent implements OnInit {
   }  
 
   registrar() {
+    this.loading = true;
     if (this.usuario.password === this.rePassword) {
-      this.auth.register(this.usuario.email, this.usuario.password).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error de registro",error)});
+      this.auth.register(this.usuario.email, this.usuario.password).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error de registro",error)}).finally(() => {this.loading = false;});
       
     } else {
       this.errorShow = true;
+      this.loading = false;
       this.errorMessage = 'Las contraseñas no coinciden';
     }
   }

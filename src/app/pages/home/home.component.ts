@@ -12,13 +12,20 @@ export class HomeComponent implements OnInit {
   errorShow : boolean = false;
   errorMessage : string = '';
   
-  constructor (private auth: AuthService) { }
+  constructor (private auth: AuthService) { 
+    
+  }
 
   logout(){
     this.auth.logout().catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso",error)});
   } 
   
   ngOnInit(): void {
+
+  }
+
+  ngAfterViewInit(): void {
+
   }
 
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { GamesComponent } from './pages/games/games.component';
 import { TatetiComponent } from './pages/tateti/tateti.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB5NbwexCmQ3_35Mc31xGsoQHRQY1o9E74",
@@ -39,7 +42,9 @@ const firebaseConfig = {
     ErrorComponent,
     NotFoundComponent,
     GamesComponent,
-    TatetiComponent
+    TatetiComponent,
+    SpinnerComponent,
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,9 @@ const firebaseConfig = {
     RouterModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
