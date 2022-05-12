@@ -21,8 +21,9 @@ import { TatetiComponent } from './pages/tateti/tateti.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { SpinnerModule } from './components/spinner/spinner.module';
 import { ChatComponent } from './components/chat/chat.component';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ChatService } from './services/chat.service';
 
 
 const firebaseConfig = {
@@ -59,11 +60,12 @@ const firebaseConfig = {
     ReactiveFormsModule,
     HttpClientModule,
     SpinnerModule,
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
+    AngularFirestoreModule, 
+    AngularFireStorageModule 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
+    ChatService,
   ],
   bootstrap: [AppComponent]
 })

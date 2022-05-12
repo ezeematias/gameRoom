@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'gameRoom';
 
   ngOnInit(): void {
-}
-  
+  }
+
 }

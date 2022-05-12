@@ -1,1 +1,16 @@
-<p>chat works!</p>
+<div class="chat-window">
+
+    <h1>Chat</h1>
+    <hr>
+    <div class="app-message" id="app-message">
+        <div *ngFor="let chat of chatService.chats" [ngClass]="{'text-right': chatService.userLog.uid == chat.uid,
+                                                                'text-left': chatService.userLog.uid != chat.uid}">
+            <span class="badge" [ngClass]="{'bg-success': chatService.userLog.uid == chat.uid,
+            'bg-primary': chatService.userLog.uid != chat.uid}">{{chat.name}}</span>
+            <p>{{chat.message}}</p>
+            <span class="date">{{chat.date}}</span>
+        </div>
+    </div>
+</div>
+<input type="text" name="message" [(ngModel)]="message" (keyup.enter)="sendMessage()" class="form-control"
+    id="app-message-input" placeholder="Escribe tu mensaje...">

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  } from "firebase/firestore";
-import { Observable } from 'rxjs';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -9,13 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class ChatComponent implements OnInit {
 
-  //public items: Observable<any[]>;
+  message: string = "";
 
-  constructor() { 
-    
+  constructor(public chatService: ChatService) {
+  }
+  
+  ngOnInit(): void {
+    this.chatService.loadMessages();
   }
 
-  ngOnInit(): void {
+  sendMessage() {
+    if (this.message.length > 0) {
+      this.chatService.addMessage(this.message)?.then(() => { console.log('Message sent') }).catch(() => { console.log('Error sending message') }).finally(() => { this.message = '' });
+    }
   }
 
 }
