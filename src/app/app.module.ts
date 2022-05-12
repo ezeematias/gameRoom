@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterModule} from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,10 @@ import { GamesComponent } from './pages/games/games.component';
 import { TatetiComponent } from './pages/tateti/tateti.component';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { SpinnerModule } from './components/spinner/spinner.module';
+import { ChatComponent } from './components/chat/chat.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyB5NbwexCmQ3_35Mc31xGsoQHRQY1o9E74",
@@ -34,7 +38,7 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent,  
+    FooterComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -42,7 +46,8 @@ const firebaseConfig = {
     ErrorComponent,
     NotFoundComponent,
     GamesComponent,
-    TatetiComponent   
+    TatetiComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -53,11 +58,12 @@ const firebaseConfig = {
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SpinnerModule
-
+    SpinnerModule,
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
