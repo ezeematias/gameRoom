@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from '../entities/user';
-
-
 import { Message } from "../interface/message";
 
 @Injectable({
@@ -47,11 +44,22 @@ export class ChatService {
     let newMessage: Message = {
       name: this.userLog.name,
       message: message,
-      date: new Date().toLocaleString(),
+      date: this.formatDate(new Date()),
       uid: this.userLog.uid,
       email: this.userLog.email
     };
 
     return this.itemsCollection?.add(newMessage);
+  }
+
+  dateComponentPad = (value: string) => {
+    var format = value;
+    return format.length < 2 ? '0' + format : format;
+  }
+
+  formatDate = (date: any) => {
+    let datePart = [date.getDate(), date.getMonth() + 1, date.getFullYear()].map(this.dateComponentPad);
+    let timePart = [date.getHours(), date.getMinutes(), date.getSeconds()].map(this.dateComponentPad);
+    return datePart.join('-') + ' ' + timePart.join(':');
   }
 }
