@@ -12,7 +12,7 @@ export class AuthService {
 
   async login(email: string, password: string) {
     
-    return await this.afauth.signInWithEmailAndPassword(email, password).then(res => this.router.navigate(['juegos/tateti'])).catch(error => {
+    return await this.afauth.signInWithEmailAndPassword(email, password).then(res => this.router.navigate(['juegos/ahorcado'])).catch(error => {
       switch (error.code) {
         case 'auth/invalid-email':
         case 'auth/user-not-found':
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   async loginWuthGoogle(email: string, password: string) {
-    return await this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => this.router.navigate(['juegos/tateti'])).catch(error => {
+    return await this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => this.router.navigate(['juegos/ahorcado'])).catch(error => {
       throw new Error('Error de logueo de Google');
     });
   }

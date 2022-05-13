@@ -25,7 +25,7 @@ export class ChatService {
     }
 
   loadMessages() {
-    this.itemsCollection = this.afs.collection<Message>('chats', ref => ref.orderBy('date', 'desc').limit(10));
+    this.itemsCollection = this.afs.collection<Message>('chats', ref => ref.orderBy('date', 'desc').limit(20));
     return this.itemsCollection.valueChanges().subscribe(chats => {
       this.chats = [];
       for (let chat of chats) {

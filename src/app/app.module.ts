@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,7 +23,10 @@ import { ChatComponent } from './components/chat/chat.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ChatService } from './services/chat.service';
-
+import { HangmanComponent } from './components/hangman/hangman.component';
+import { HangmanDisplayComponent } from './components/hangman-display/hangman-display.component';
+import { HangmanKeyboardComponent } from './components/hangman-keyboard/hangman-keyboard.component';
+import { HangmanQuestionComponent } from './components/hangman-question/hangman-question.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB5NbwexCmQ3_35Mc31xGsoQHRQY1o9E74",
@@ -48,7 +50,11 @@ const firebaseConfig = {
     NotFoundComponent,
     GamesComponent,
     TatetiComponent,
-    ChatComponent
+    ChatComponent,
+    HangmanComponent,
+    HangmanDisplayComponent,
+    HangmanKeyboardComponent,
+    HangmanQuestionComponent,
   ],
   imports: [
     BrowserModule,

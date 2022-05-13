@@ -5,8 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { TatetiComponent } from './pages/tateti/tateti.component';
 import { GamesComponent } from './pages/games/games.component';
+import { HangmanComponent } from './components/hangman/hangman.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'quien-soy', component: QuienSoyComponent },
   {
     path: 'juegos', component: GamesComponent, children: [
-      { path: 'tateti', component: TatetiComponent },
+      { path: 'ahorcado', component: HangmanComponent },
       { path: '**', component: NotFoundComponent }
     ]
   },

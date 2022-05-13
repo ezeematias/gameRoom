@@ -61,6 +61,38 @@ footer{
     height: 100%;
  }
 
+ * {
+    outline: none;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Dongle', sans-serif;
+  }
+  
+  .btnHangman {
+    border-radius: 4px;
+    min-width: 36px;
+    min-height: 36px;
+    background-color: #f5216e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      &:not(.btn--disabled) {
+        opacity: 0.7;
+      }
+    }
+    &--disabled {
+      background-color: #dcdcdc;
+      cursor: default;
+    }
+  }
+
 
   
   
