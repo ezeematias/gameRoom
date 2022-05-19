@@ -1,0 +1,18 @@
+<div class="cuadro">
+
+    <div class="carta">
+        <app-error *ngIf="errorShow" mensaje="{{errorMessage}}" color="alert-danger"></app-error>
+        <div class="carta"
+        style='background: url(../../../assets/cartas.jpg); width: 225px; height: 315px; background-position: right {{right}}px bottom {{bottom}}px;'>
+    </div>
+</div>
+<div class="interfaz">
+    <div class="card-header">
+        <p>La proxima carta, ¿Será mayor o menor?</p>   
+        <p>Aciertos Seguidos: {{aciertos}} </p>
+    </div>
+    <button class="btn btn-danger form-control " (click)="apuestaMayor()">Mayor</button>
+    <button class="btn btn-danger form-control " (click)="apuestaMenor()">Menor</button><br>
+    <button class="btn btn-warning form-control " (click)="cartaRandom()">Carta Random</button>
+</div>
+</div>

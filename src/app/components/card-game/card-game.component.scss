@@ -1,0 +1,37 @@
+element.syle
+{
+    background-position-x: 225px;
+    background-position-y: 315px;
+
+}
+
+.interfaz
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white; 
+}
+.cuadro{
+    margin-right: 15px;
+}
+
+.carta
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+/* .carta
+{
+    background: url(../../../assets/cartas.jpg); 
+    width: 225px;
+    height: 315px;
+    background-position: right 450px bottom 315px;
+} */

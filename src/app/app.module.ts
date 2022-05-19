@@ -27,6 +27,9 @@ import { HangmanComponent } from './components/hangman/hangman.component';
 import { HangmanDisplayComponent } from './components/hangman-display/hangman-display.component';
 import { HangmanKeyboardComponent } from './components/hangman-keyboard/hangman-keyboard.component';
 import { HangmanQuestionComponent } from './components/hangman-question/hangman-question.component';
+import { CardGameComponent } from './components/card-game/card-game.component';
+import { AskedComponent } from './components/asked/asked.component';
+import { AnagramComponent } from './components/anagram/anagram.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB5NbwexCmQ3_35Mc31xGsoQHRQY1o9E74",
@@ -55,6 +58,9 @@ const firebaseConfig = {
     HangmanDisplayComponent,
     HangmanKeyboardComponent,
     HangmanQuestionComponent,
+    CardGameComponent,
+    AskedComponent,
+    AnagramComponent,
   ],
   imports: [
     BrowserModule,

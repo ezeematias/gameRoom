@@ -1,0 +1,19 @@
+<div class="juego">
+    <div style="text-align:center">
+      <h1>
+        Anagrama
+      </h1>
+    </div>
+    <div class="tablero">
+      <h1 [hidden]="juegoNuevo==false">Ingrese la palabra correcta</h1>
+      <h3 [hidden]="juegoNuevo==false">{{palabraDesordenada}}</h3>
+      <input [hidden]="juegoNuevo==false"  type="text" name="palabraUsuario" [(ngModel)]="respuesta">
+      <button [hidden]="juegoNuevo==true"  (click)="nuevaPalabra()">Nueva palabra</button>
+      <button [hidden]="juegoNuevo==false" [disabled]="respuesta === ''" (click)="verificar()" for="palabraUsuario" id="enviar">Enviar</button>
+      <app-error *ngIf="errorShow" mensaje="{{errorMessage}}" color="alert-danger"></app-error>
+      <app-error *ngIf="messageShow" mensaje="{{message}} La palabra correcta era {{palabraSeleccionada}}" color="alert-success"></app-error>
+      <!-- <h1 [hidden]="ganador==false">Ganaste</h1>
+      <h1 [hidden]="perdedor==false">Perdiste...<br>La palanra correcta era: {{palabraSeleccionada}}</h1> -->
+    </div>
+  </div>
+  

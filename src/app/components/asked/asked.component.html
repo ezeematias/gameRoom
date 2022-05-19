@@ -1,0 +1,9 @@
+<div class="box">
+    <h3>Adivinemos el Pokemón</h3>
+    <img src={{urlImage}} alt="">
+    <app-error *ngIf="errorShow" mensaje="{{errorMessage}}" color="alert-danger"></app-error>
+    <app-error *ngIf="messageShow" mensaje="{{message}}" color="alert-success"></app-error>
+    <button class="btn btn-primary form-control " (click)="selection(1)">{{response1}}</button>
+    <button class="btn btn-danger form-control " (click)="selection(2)">{{response2}}</button>
+    <button class="btn btn-warning form-control " (click)="selection(3)">{{response3}}</button> 
+</div>
