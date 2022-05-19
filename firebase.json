@@ -1,10 +1,16 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "dist/game-room",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
