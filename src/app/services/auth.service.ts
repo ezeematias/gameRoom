@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
+import { updateProfile, getAuth } from '@firebase/auth';
+import { User } from '../entities/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,8 @@ export class AuthService {
 
   constructor(private afauth: AngularFireAuth, private router: Router) { }
 
-  async login(email: string, password: string) {
-    
+  async login(email: string, password: string): Promise<boolean> {
+
     return await this.afauth.signInWithEmailAndPassword(email, password).then(res => this.router.navigate(['juegos/ahorcado'])).catch(error => {
       switch (error.code) {
         case 'auth/invalid-email':
@@ -46,10 +48,17 @@ export class AuthService {
     });
   }
 
-  async logout() {   
-    return await this.afauth.signOut().then(res => this.router.navigate(['login'])).catch(error => {;
+  async uploadUser(name: string) {
+    let auth = getAuth();
+    return await updateProfile(auth.currentUser!, { displayName: name }).catch(
+      (err) => console.log(err));
+  }
+
+  async logout(): Promise<boolean> {
+    return await this.afauth.signOut().then(res => this.router.navigate(['login'])).catch(error => {
+      ;
       throw new Error('Error en desloguearse');
-    });    
+    });
   }
 
   getAuth() {

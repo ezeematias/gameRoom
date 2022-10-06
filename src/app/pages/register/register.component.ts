@@ -13,7 +13,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private auth: AuthService, private router: Router, private readonly fb: FormBuilder, private spinnerService:SpinnerService) { }
+  constructor(private auth: AuthService, private router: Router, private readonly fb: FormBuilder, private spinnerService: SpinnerService) { }
 
   form!: FormGroup;
 
@@ -33,12 +33,16 @@ export class RegisterComponent implements OnInit {
 
   get passwordCtrl(): AbstractControl {
     return this.form.get('password') as FormGroup;
-  }  
+  }
+
+  get displayName(): AbstractControl {
+    return this.form.get('displayName') as FormGroup;
+  }
 
   registrar() {
     this.spinnerService.show();
     if (this.usuario.password === this.rePassword) {
-      this.auth.register(this.usuario.email, this.usuario.password).catch(error => {this.errorShow = true; this.errorMessage = error.message; console.log("Error de registro",error)}).finally(() => {this.spinnerService.hide();});
+      this.auth.register(this.usuario.email, this.usuario.password).catch(error => { this.errorShow = true; this.errorMessage = error.message; console.log("Error de registro", error) }).finally(() => { this.auth.uploadUser(this.usuario.displayName); this.spinnerService.hide(); });
       
     } else {
       this.errorShow = true;
@@ -49,9 +53,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: ['', Validators.pattern("^[^@]+@[^@]+\.[a-zA-Z]{2,}$")],      
+      email: ['', Validators.pattern("^[^@]+@[^@]+\.[a-zA-Z]{2,}$")],
       password: ['', [Validators.minLength(6), Validators.maxLength(20)]],
-      rePassword: ['', [Validators.minLength(6), Validators.maxLength(20)]]
+      rePassword: ['', [Validators.minLength(6), Validators.maxLength(20)]],
+      displayName: ['']
     });
   }
 }

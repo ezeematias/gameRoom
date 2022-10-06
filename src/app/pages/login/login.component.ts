@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SpinnerService } from 'src/app/services/spinner.service';
+import { LogsService } from 'src/app/services/logs.service';
+
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private auth: AuthService, private router: Router, private readonly fb: FormBuilder, private spinnerService: SpinnerService) { }
+  constructor(private auth: AuthService, private router: Router, private readonly fb: FormBuilder, private spinnerService: SpinnerService, private logService: LogsService) { }
 
   usuario = new User();
 
@@ -36,15 +38,17 @@ export class LoginComponent implements OnInit {
   ingresar() {
     this.spinnerService.show();
     this.auth.login(this.usuario.email, this.usuario.password).then(res => {
-      console.log("Ingresó", res)
-    }).catch(error => { this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso", error) }).finally(() => { this.spinnerService.hide(); });
+      console.log("Ingresó", res);
+      this.logService.registerUserLoginTime(this.form);
+    }).catch(error => { this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso", error); }).finally(() => { this.spinnerService.hide(); });
   }
 
   ingresarConGoogle() {
     this.spinnerService.show();
     this.auth.loginWuthGoogle(this.usuario.email, this.usuario.password).then(res => {
-      console.log("Se logueo", res)
-    }).catch(error => { this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso", error) }).finally(() => { this.spinnerService.hide(); });
+      console.log("Se logueo", res);
+      this.logService.registerUserLoginTime(this.form);
+    }).catch(error => { this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso", error); }).finally(() => { this.spinnerService.hide(); });
   }
 
   ngOnInit(): void {

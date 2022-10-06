@@ -5,19 +5,27 @@
         </div>
         <div class="card-body p-4">
             <app-error *ngIf="errorShow" mensaje="{{errorMessage}}" color="alert-danger"></app-error>
-            <h3>SPRINT 4</h3>
-            <h4>Agregar juego Preguntados</h4>
+            <h3>SPRINT 5</h3>
+            <h4>Incorporar listado de resultados</h4>
             <ul>
-                <li>Tiene que obtener las imágenes de una api.</li>
-                <li>Realizar el llamado a la api desde un Service.</li>
-                <li>Dar al jugador opciones de elección. No se puede ingresar datos por teclado.</li>
+                <li>Al finalizar cada juego se debe guardar registro del resultado.</li>
+                <li>Guardar datos del usuario, fecha, puntaje, etc...</li>
             </ul>
-            <h4>Juego propio</h4>
+            <h4>Incorporar una encuesta</h4>
+            <h5>Tiene que pedir los siguientes datos:</h5>
             <ul>
-                <li>Juegos que no se pueden utilizar TA-TE-TI, MEMOTEST y PIEDRA, PAPEL Y TIJERA</li>
-                <li>Agregar descripción de su juego en la sección “Quién soy”. Debe contar con
-                    información de qué juego es y cómo se juega.</li>               
-            </ul>           
+                <li>Nombre y apellido.</li>
+                <li>Edad, validar que sean mayores de 18 años y menores de 99 años..</li>
+                <li>Número de teléfono, validar que sean solo números y no más de 10 caracteres.</li>
+            </ul>
+            <h4>Mínimo 3 preguntas</h4>
+            <ul>
+                <li>Utilizar distintos controles, textbox, checkbox, radiobutton, etc..</li>
+                <li>No se pueden repetir.</li>
+            </ul>
+            <h4>Tiene que contar con validaciones</h4>
+            <h4>Todos los campos son requeridos</h4>
+            <h4>Guardar las respuestas en Firebase identificando el usuario</h4>
 
             <div *ngIf="userLogged|async as user; else then_content">
                 <button class="btn btn-danger form-control " (click)="logout()">Cerrar Sesión</button>

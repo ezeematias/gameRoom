@@ -8,7 +8,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -46,7 +45,6 @@ const firebaseConfig = {
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
     RegisterComponent,
     QuienSoyComponent,
     ErrorComponent,
@@ -72,8 +70,8 @@ const firebaseConfig = {
     ReactiveFormsModule,
     HttpClientModule,
     SpinnerModule,
-    AngularFirestoreModule, 
-    AngularFireStorageModule 
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
