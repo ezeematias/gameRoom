@@ -29,6 +29,8 @@ import { HangmanQuestionComponent } from './components/hangman-question/hangman-
 import { CardGameComponent } from './components/card-game/card-game.component';
 import { AskedComponent } from './components/asked/asked.component';
 import { AnagramComponent } from './components/anagram/anagram.component';
+import { RankingComponent } from './components/ranking/ranking.component';
+import { PollComponent } from './pages/poll/poll.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB5NbwexCmQ3_35Mc31xGsoQHRQY1o9E74",
@@ -59,6 +61,8 @@ const firebaseConfig = {
     CardGameComponent,
     AskedComponent,
     AnagramComponent,
+    RankingComponent,
+    PollComponent,
   ],
   imports: [
     BrowserModule,

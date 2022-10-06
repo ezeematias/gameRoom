@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "eu-gameroom"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }

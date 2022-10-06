@@ -64,5 +64,4 @@ export class AuthService {
   getAuth() {
     return this.afauth.authState;
   }
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { start } from 'repl';
 import { ApiService } from 'src/app/services/api.service';
+import { RankingService } from 'src/app/services/ranking.service';
 
 @Component({
   selector: 'app-asked',
@@ -12,6 +13,7 @@ export class AskedComponent implements OnInit {
   errorMessage: string = '';
   messageShow: boolean = false;
   message: string = '';
+  pointsUser: number = 0;
 
   urlImage: string = "";
   response1: string = "";
@@ -20,7 +22,7 @@ export class AskedComponent implements OnInit {
   pokemon: string[] = ["pikachu", "dragonite", "squirtle", "charmander", "bulbasaur", "mewtwo", "mew", "ditto", "eevee", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "nidoran-f", "nidorina", "nidoqueen", "nidoran-m", "nidorino", "nidoking", "clefairy", "clefable", "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat", "oddish", "gloom", "vileplume", "paras", "parasect", "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta", "rapidash", "slowpoke", "slowbro", "magnemite", "magneton", "farfetchd", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute", "exeggutor", "cubone", "marowak", "hitmonlee", "hitmonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu", "starmie", "mr-mime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto"];
   selectedPokemon: string = "";
 
-  constructor(private pokemonService: ApiService) { }
+  constructor(private pokemonService: ApiService, private ranking: RankingService) { }
 
   ngOnInit(): void {
     this.start();
@@ -56,12 +58,17 @@ export class AskedComponent implements OnInit {
         if (this.response1 !== this.selectedPokemon) {
           this.errorShow = true;
           this.errorMessage = "No has acertado";
+          if (this.pointsUser != 0) {
+            this.ranking.addPoint(this.pointsUser, "Preguntados");
+          }
+          this.pointsUser = 0;
           setTimeout(() => {
             this.errorShow = false;
           }, 4000);
         } else {
           this.messageShow = true;
           this.message = "Correcto";
+          this.pointsUser == 0 ? this.pointsUser = 3 : this.pointsUser *= Math.floor(Math.random() * (3 - 0) + 1);
           setTimeout(() => {
             this.messageShow = false;
           }, 4000);
@@ -71,12 +78,17 @@ export class AskedComponent implements OnInit {
         if (this.response2 !== this.selectedPokemon) {
           this.errorShow = true;
           this.errorMessage = "No has acertado";
+          if (this.pointsUser != 0) {
+            this.ranking.addPoint(this.pointsUser, "Preguntados");
+          }
+          this.pointsUser = 0;
           setTimeout(() => {
             this.errorShow = false;
           }, 4000);
         } else {
           this.messageShow = true;
           this.message = "Correcto";
+          this.pointsUser == 0 ? this.pointsUser = 3 : this.pointsUser *= Math.floor(Math.random() * (3 - 0) + 1);
           setTimeout(() => {
             this.messageShow = false;
           }, 4000);
@@ -87,12 +99,17 @@ export class AskedComponent implements OnInit {
         if (this.response3 !== this.selectedPokemon) {
           this.errorShow = true;
           this.errorMessage = "No has acertado";
+          if (this.pointsUser != 0) {
+            this.ranking.addPoint(this.pointsUser, "Preguntados");
+          }
+          this.pointsUser = 0;
           setTimeout(() => {
             this.errorShow = false;
           }, 4000);
         } else {
           this.messageShow = true;
           this.message = "Correcto";
+          this.pointsUser == 0 ? this.pointsUser = 3 : this.pointsUser *= Math.floor(Math.random() * (3 - 0) + 1);
           setTimeout(() => {
             this.messageShow = false;
           }, 4000);

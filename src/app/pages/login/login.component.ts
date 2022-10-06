@@ -6,7 +6,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { SpinnerService } from 'src/app/services/spinner.service';
 import { LogsService } from 'src/app/services/logs.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -47,7 +46,6 @@ export class LoginComponent implements OnInit {
     this.spinnerService.show();
     this.auth.loginWuthGoogle(this.usuario.email, this.usuario.password).then(res => {
       console.log("Se logueo", res);
-      this.logService.registerUserLoginTime(this.form);
     }).catch(error => { this.errorShow = true; this.errorMessage = error.message; console.log("Error en ingreso", error); }).finally(() => { this.spinnerService.hide(); });
   }
 
@@ -66,5 +64,4 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value);
   }
-
 }

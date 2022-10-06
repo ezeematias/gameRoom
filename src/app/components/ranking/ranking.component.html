@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Jugador</th>
+      <th scope="col">Puntos</th>
+      <th scope="col">Juego</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of rankingService.rankings; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ user.name }}
+      </td>
+      <td>{{ user.point | number }}</td>
+      <td>{{ user.game}}</td>
+    </tr>
+  </tbody>
+</table>

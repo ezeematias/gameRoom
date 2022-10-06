@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormGroup } from '@angular/forms';
+import { User } from '../entities/user';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +10,17 @@ import { FormGroup } from '@angular/forms';
 export class LogsService {
 
   logs: any;
+  public userLog: any = {};
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private authService: AuthService, private db: AngularFirestore) {
+    this.authService.getAuth().subscribe(user => {
+      if (user) {
+        this.userLog.name = user.displayName;
+        this.userLog.uid = user.uid;
+        this.userLog.email = user.email;
+      }
+    });
+  }
 
   public async registerUserLoginTime(user: FormGroup) {
     this.logs = {
@@ -18,7 +29,7 @@ export class LogsService {
     }
     return await this.db.collection('logs').add(this.logs);
   }
-
+  
   async getLogs() {
     return await this.db.collection('logs').valueChanges();
   }

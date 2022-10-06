@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { AuthService } from 'src/app/services/auth.service';
-import { Message } from "../interface/message";
+import { RankingUser } from '../interface/ranking-user';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
+export class RankingService {
 
-export class ChatService {
   private itemsCollection?: AngularFirestoreCollection<any>;
-  public chats: Message[] = [];
+  public rankings: RankingUser[] = [];
   public userLog: any = {};
-  elements: any;
 
   constructor(private authService: AuthService, private afs: AngularFirestore) {
     this.authService.getAuth().subscribe(user => {
@@ -23,30 +22,31 @@ export class ChatService {
     });
   }
 
-  loadMessages() {
-    this.itemsCollection = this.afs.collection<Message>('chats', ref => ref.orderBy('date', 'desc').limit(20));
-    return this.itemsCollection.valueChanges().subscribe(chats => {
-      this.chats = [];
-      for (let chat of chats) {
-        this.chats.unshift(chat);
-      }
-      this.elements = document.getElementById('app-message');
-      if (this.elements != null) {
-        this.elements.scrollTop = this.elements.scrollHeight;
+  loadRanking() {
+    this.itemsCollection = this.afs.collection<RankingUser>('ranking', ref => ref.orderBy('point', 'desc'));
+    return this.itemsCollection.valueChanges().subscribe(rankings => {
+      this.rankings = [];
+      let max = 0;
+      for (let user of rankings) {
+        if (max < 10) {
+          this.rankings.push(user);
+          max++;
+        }
       }
     });
   }
 
-  addMessage(message: string) {
-    let newMessage: Message = {
+  addPoint(points: number, game: string) {
+    let newPoint: RankingUser = {
       name: this.userLog.name,
-      message: message,
+      point: points,
       date: this.formatDate(new Date()),
       uid: this.userLog.uid,
-      email: this.userLog.email
+      email: this.userLog.email,
+      game: game
     };
 
-    return this.itemsCollection?.add(newMessage);
+    return this.itemsCollection?.add(newPoint);
   }
 
   dateComponentPad = (value: string) => {

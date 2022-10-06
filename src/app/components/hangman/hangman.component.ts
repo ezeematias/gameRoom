@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HangmanService } from 'src/app/services/hangman.service';
+import { RankingService } from 'src/app/services/ranking.service';
 
 @Component({
   selector: 'app-hangman',
@@ -13,10 +14,12 @@ export class HangmanComponent implements OnInit {
   guesses: string[] = [];
   category: string = '';
   restartGameBtnShown = false;
+  pointUser: number = 0;
   constructor(
     private hangmanService: HangmanService,
-    private location: Location
-  ) {}
+    private location: Location,
+    private ranking: RankingService
+  ) { }
 
   ngOnInit(): void {
     let jsonPath;
@@ -35,6 +38,7 @@ export class HangmanComponent implements OnInit {
     if (!letter || this.guesses.includes(letter)) {
       return;
     }
+    this.pointUser = this.question.length * Math.floor(Math.random() * (10 - 0) + 1);
     this.guesses = [...this.guesses, letter];
   }
 
@@ -56,6 +60,7 @@ export class HangmanComponent implements OnInit {
   }
 
   onGameFinished() {
+    this.ranking.addPoint(this.pointUser, "Ahorcado");
     this.restartGameBtnShown = true;
   }
 }

@@ -3,15 +3,16 @@
         <div class="card-header">
             <b>Sala de Juegos</b>
         </div>
-        <div class="card-body p-3 container">         
+        <div class="card-body p-3 container">
             <router-outlet></router-outlet>
-            <app-chat></app-chat>   
+            <app-chat></app-chat>
         </div>
-        <div class="card-body p-3 container">         
+        <app-ranking></app-ranking>
+        <div class="card-body p-3 container">
             <a class="btn btn-warning form-control" routerLink="/juegos/cartas"> Cartas</a>
             <a class="btn btn-warning form-control" routerLink="/juegos/ahorcado"> Ahorcado</a>
             <a class="btn btn-warning form-control" routerLink="/juegos/preguntados"> Preguntados</a>
             <a class="btn btn-warning form-control" routerLink="/juegos/anagrama"> Anagrama</a>
-        </div> 
+        </div>
     </div>
 </div>
