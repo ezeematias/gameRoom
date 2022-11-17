@@ -5,33 +5,19 @@
         </div>
         <div class="card-body p-4">
             <app-error *ngIf="errorShow" mensaje="{{errorMessage}}" color="alert-danger"></app-error>
-            <h3>SPRINT 5</h3>
-            <h4>Incorporar listado de resultados</h4>
+            <h3>SPRINT 6</h3>
+            <h4>Incorporar una nueva sección que muestre las respuestas de la encuesta.</h4>
             <ul>
-                <li>Al finalizar cada juego se debe guardar registro del resultado.</li>
-                <li>Guardar datos del usuario, fecha, puntaje, etc...</li>
+                <li>Solo lo podrá ver un usuario con perfil administrador.</li>
+                <li>Utilizar Can Activate y Guard.</li>
             </ul>
-            <h4>Incorporar una encuesta</h4>
-            <h5>Tiene que pedir los siguientes datos:</h5>
-            <ul>
-                <li>Nombre y apellido.</li>
-                <li>Edad, validar que sean mayores de 18 años y menores de 99 años..</li>
-                <li>Número de teléfono, validar que sean solo números y no más de 10 caracteres.</li>
-            </ul>
-            <h4>Mínimo 3 preguntas</h4>
-            <ul>
-                <li>Utilizar distintos controles, textbox, checkbox, radiobutton, etc..</li>
-                <li>No se pueden repetir.</li>
-            </ul>
-            <h4>Tiene que contar con validaciones</h4>
-            <h4>Todos los campos son requeridos</h4>
-            <h4>Guardar las respuestas en Firebase identificando el usuario</h4>
 
             <div *ngIf="userLogged|async as user; else then_content">
                 <button class="btn btn-danger form-control " (click)="logout()">Cerrar Sesión</button>
                 <a class="btn btn-info form-control" routerLink="/quien-soy"> Quien soy</a>
                 <a class="btn btn-warning form-control" routerLink="/juegos/cartas"> Juegos</a>
                 <a class="btn btn-primary form-control" routerLink="/encuesta"> Encuesta</a>
+                <a class="btn btn-dark form-control" routerLink="/list"> Listado de Encuesta</a>
 
             </div>
             <ng-template #then_content>

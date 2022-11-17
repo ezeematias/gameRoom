@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   async loginWuthGoogle(email: string, password: string) {
-    return await this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => this.router.navigate(['juegos/ahorcado'])).catch(error => {
+    return await this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => { this.router.navigate(['juegos/ahorcado']); localStorage.setItem('user', res.user?.email!); }).catch(error => {
       throw new Error('Error de logueo de Google');
     });
   }
@@ -55,6 +55,7 @@ export class AuthService {
   }
 
   async logout(): Promise<boolean> {
+    localStorage.clear();
     return await this.afauth.signOut().then(res => this.router.navigate(['login'])).catch(error => {
       ;
       throw new Error('Error en desloguearse');

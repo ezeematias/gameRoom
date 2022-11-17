@@ -10,6 +10,8 @@ import { CardGameComponent } from './components/card-game/card-game.component';
 import { AskedComponent } from './components/asked/asked.component';
 import { AnagramComponent } from './components/anagram/anagram.component';
 import { PollComponent } from './pages/poll/poll.component';
+import { PollListComponent } from './pages/poll-list/poll-list.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'quien-soy', component: QuienSoyComponent },
   { path: 'encuesta', component: PollComponent },
+  { path: 'list', component: PollListComponent, canActivate: [AdminGuard] },
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
   {
     path: 'juegos', component: GamesComponent, children: [

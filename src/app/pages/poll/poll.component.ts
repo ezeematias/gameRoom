@@ -49,7 +49,10 @@ export class PollComponent implements OnInit {
       lastname: ['', [Validators.minLength(3), Validators.maxLength(20)]],
       name: ['', [Validators.minLength(3), Validators.maxLength(20)]],
       age: ['', [Validators.min(18), Validators.max(99)]],
-      cellPhone: ['', [Validators.minLength(8), Validators.maxLength(10)]]
+      cellPhone: ['', [Validators.minLength(8), Validators.maxLength(10)]],
+      bestGame: [''],
+      nameGame: [''],
+      yesGame: [''],
     });
   }
 

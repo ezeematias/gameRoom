@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <b>Registro de encuestas</b>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Mejor Juego</th>
+                    <th scope="col">Juego Recomendado</th>
+                    <th scope="col">Sala de juegos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.cellPhone }}</td>
+                    <td>{{ user.bestGame }}</td>
+                    <td>{{ user.nameGame }}</td>
+                    <td>{{ user.yesGame | yesNo }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -14,26 +14,26 @@
                     <div class="errorMessage"
                         *ngIf="getValue('name')?.invalid && (getValue('name').touched || getValue('name').dirty)">
                         Ingrese un nombre válido</div>
-                </div><br>
+                    <br>
 
-                <div class="form-group">
+
                     <label style="float: left">Apellido</label>
                     <input class="form-control" formControlName="lastname" type="lastname"
                         placeholder="Ingrese su apellido" required>
                     <div class="errorMessage"
                         *ngIf="getValue('lastname')?.invalid && (getValue('lastname').touched || getValue('lastname').dirty)">
                         Ingrese un apellido válido</div>
-                </div><br>
+                    <br>
 
-                <div class="form-group">
+
                     <label style="float: left">Edad</label>
                     <input class="form-control" formControlName="age" type="age" placeholder="Ingrese su edad" required>
                     <div class="errorMessage"
                         *ngIf="getValue('age')?.invalid && (getValue('age').touched || getValue('age').dirty)">
                         Mayores de 18 años y menores de 99</div>
-                </div><br>
+                    <br>
 
-                <div class="form-group">
+
                     <label style="float: left">Teléfono</label>
                     <input class="form-control" formControlName="cellPhone" type="cellPhone"
                         placeholder="Ingrese su teléfono" required>
@@ -41,18 +41,32 @@
                         *ngIf="getValue('cellPhone')?.invalid && (getValue('cellPhone').touched || getValue('cellPhone').dirty)">
                         Entre 8 y 10 números</div>
                     <br>
-                    <label style="float: left">Contanos sobre los juegos</label><br>
+                    <h5 style="float: left">Contanos sobre los juegos</h5>
+                    <br><br>
+                    <label style="float: left">Favorito</label><br>
+                    <select class="form-select" id="bestGame" formControlName="bestGame" name="bestGame" required>
+                        <option value="Ahorcado">Ahorcado</option>
+                        <option value="Mayor o Menor">Mayor o Menor</option>
+                        <option value="Preguntados">Preguntados</option>
+                        <option value="Anagrama">Anagrama</option>
+                    </select><br>
 
-                    <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
-                        <button type="button" class="btn btn-outline-primary me-2" id="dropdownManual" ngbDropdownAnchor
-                            (focus)="myDrop.open()">¿Cuál fue el juego que más te gustó?</button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownManual">
-                            <button value="ahorcado" ngbDropdownItem>Ahorcado</button>
-                            <button value="mayormenor" ngbDropdownItem>Mayor o Menor</button>
-                            <button value="preguntados" ngbDropdownItem>Preguntados</button>
-                            <button value="anagrama" ngbDropdownItem>Anagrama</button>
-                        </div>
+                    <label style="float: left">Un nuevo juego</label>
+                    <input class="form-control" formControlName="nameGame" type="nameGame"
+                        placeholder="Ingrese su nombre" required>
+                    <div class="errorMessage"
+                        *ngIf="getValue('nameGame')?.invalid && (getValue('nameGame').touched || getValue('nameGame').dirty)">
+                        Ingrese un nombre válido</div>
+                    <br>
+                    <label style="float: left">¿Recomendarías la sala de juegos?</label>
+                    <br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="yesGame" formControlName="yesGame">
+                        <label class="form-check-label" for="yesGame">
+                            Si, las recomiento.
+                        </label>
                     </div>
+
                 </div><br>
 
                 <button class="btn btn-success form-control" (click)="registrar()"

@@ -15,8 +15,16 @@ export class PollService {
       lastName: poll.get("lastname")?.value,
       name: poll.get("name")?.value,
       age: poll.get("age")?.value,
-      cellPhone: poll.get("cellPhone")?.value
+      cellPhone: poll.get("cellPhone")?.value,
+      bestGame: poll.get("bestGame")?.value,
+      nameGame: poll.get("nameGame")?.value,
+      yesGame: poll.get("yesGame")?.value,
     }
     return await this.db.collection('polls').add(this.polls);
   }
+
+  getCollection(coleccion: string) {
+    return this.db.collection(coleccion).valueChanges();
+  }
+
 }

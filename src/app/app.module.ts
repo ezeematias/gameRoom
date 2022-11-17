@@ -31,6 +31,8 @@ import { AskedComponent } from './components/asked/asked.component';
 import { AnagramComponent } from './components/anagram/anagram.component';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { PollComponent } from './pages/poll/poll.component';
+import { PollListComponent } from './pages/poll-list/poll-list.component';
+import { YesNoPipe } from './pipes/yes-no.pipe';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB5NbwexCmQ3_35Mc31xGsoQHRQY1o9E74",
@@ -63,6 +65,8 @@ const firebaseConfig = {
     AnagramComponent,
     RankingComponent,
     PollComponent,
+    PollListComponent,
+    YesNoPipe,
   ],
   imports: [
     BrowserModule,
